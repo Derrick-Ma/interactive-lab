@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--<link rel="stylesheet"href="style.css">-->
+		<style>
+			body{
+				width: 600px;
+				text-align: center;
+				background-color: rgb(100,200,255);
+			}
+			.Main{
+				width: 320px;
+				padding: 0px;
+				border: 0px;
+				margin: 0;
+			}
+			.TopBar{
+				color: orange;
+				width: 600px;
+				height: 100px;
+				font-size: 50px;
+				font-weight: bold;
+			}
+			.Quiz{
+				color: purple;
+				width: 600px;
+				height: 150px;
+				font-size: 70px;
+				font-weight: bold;
+			}
+			.Play{
+				width: 600px;
+			}
+			input{
+				outline: none;
+			}
+			input:active{
+				box-shadow: 0 5px//#666;
+				transform: translateY(4px);
+			}
+		</style>
+		<script>
+		
+		var num1 = getRandom(4);
+		var num2 = getRandom(4);
+		var trueans = getTrueAns(num1,num2);
+		function getTrueAns(a1, a2){
+			return a1+a2;
+		}
+		function init(){
+			document.getElementById("QuizText").innerHTML=num1.toString()+" + "+num2.toString()+" = ?";
+		}
+		
+		function checkAns(n){
+			if(n==trueans){
+				
+				document.getElementById("TopBarText").innerHTML="Well Done!";
+				document.getElementById("TopBarText").style.color="green";
+				
+				newQuention();
+			}else{
+				
+				document.getElementById("TopBarText").innerHTML="Sorry! Wrong!";
+				document.getElementById("TopBarText").style.color="red";
+			}
+		}
+		
+		function getRandom(max){
+			var num = Math.floor((Math.random()*4)+1);
+			console.log(num);
+			return num;
+		}
+		function newQuention(){
+			
+			num1 = getRandom(4);
+			num2 = getRandom(4);
+			trueans = getTrueAns(num1,num2);
+			
+			document.getElementById("QuizText").innerHTML=num1.toString()+" + "+num2.toString()+" = ?";
+		}
+		
+		</script>
+	<title>Math Game V1</title>
+</head>
+
+<body onload="init()">
+	<div class="Main">
+		<div class="TopBar">
+			<p id="TopBarText">Quiz Start!</p>
+		</div>
+		<div class="Quiz">
+			<p id="QuizText"></p>
+		</div>
+		<div class="Play">
+			<!--<button style="background: url(images/number1.png); background-size: contain;"></button>-->
+			<input type="image" src="./images/number1.png" width=100px alt="1" class="Ans" onclick="checkAns(1)"/>
+			<input type="image" src="./images/number2.png" width=100px alt="2" class="Ans" onclick="checkAns(2)"/>
+			<input type="image" src="./images/number3.png" width=100px alt="3" class="Ans" onclick="checkAns(3)"/>
+			<br>
+			<input type="image" src="./images/number4.png" width=100px alt="4" class="Ans" onclick="checkAns(4)"/>
+			<input type="image" src="./images/number5.png" width=100px alt="5" class="Ans" onclick="checkAns(5)"/>
+			<input type="image" src="./images/number6.png" width=100px alt="6" class="Ans" onclick="checkAns(6)"/>
+			<br>
+			<input type="image" src="./images/number7.png" width=100px alt="7" class="Ans" onclick="checkAns(7)"/>
+			<input type="image" src="./images/number8.png" width=100px alt="8" class="Ans" onclick="checkAns(8)"/>
+			<input type="image" src="./images/number9.png" width=100px alt="9" class="Ans" onclick="checkAns(9)"/>
+			<br>
+			<input type="image" src="./images/number0.png" width=100px alt="0" class="Ans" onclick="checkAns(0)"/>
+		</div>
+	</div>
+</body>
+
+</html>
